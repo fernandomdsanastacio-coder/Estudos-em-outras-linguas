@@ -11,7 +11,7 @@ using System;									Criar uma variável é igual ao c++ que Inferno.
 
 public class HelloWorld
 {
-    public static void Main(string[] args)    //Escreve no programa Try programiz.pro
+    public static void Main(string[] args)    //Escreve no programa Try programiz.pro.
     {
         Console.WriteLine ("Try programiz.pro");
     }
@@ -23,15 +23,36 @@ Console.WriteLine ("Hello world");   //igual
 
 Se usar using System não é preciso escrever System.Console.WriteLine ().
 
-class Program{   // não sei o que faz
+class Program{   // não sei o que faz.
 }
 
 Qual é a função do método Main em um programa C#?
 Servir como ponto de entrada onde o programa inicia sua execução.
 
-int - armazena números inteiros (números inteiros), sem casas decimais, como 123 ou -123
-double - armazena números de ponto flutuante, com casas decimais, como 19,99 ou -19,99
-char - armazena caracteres individuais, como 'a' ou 'B'. Os valores char são delimitados por aspas simples
-string - armazena texto, como "Olá Mundo". Os valores string são delimitados por aspas duplas
+int - armazena números inteiros (números inteiros), sem casas decimais, como 123 ou -123.
+double - armazena números de ponto flutuante, com casas decimais, como 19,99 ou -19,99.		Não é usado o float.
+char - armazena caracteres individuais, como 'a' ou 'B'. Os valores char são delimitados por aspas simples.
+string - armazena texto, como "Olá Mundo". Os valores string são delimitados por aspas duplas.
+bool - armazena valores com dois estados: verdadeiro ou falso.
+Todas as variáveis é obrigatório ter um valor por exemplo int num = 10;
+type variableName = value;
 
-bool - armazena valores com dois estados: verdadeiro ou falso
+int myNum = 5;
+double myDoubleNum = 5.99D;				
+char myLetter = 'D';
+bool myBool = true;
+string myText = "Hello";
+
+string name = "John";			output: John
+Console.WriteLine(name);
+
+O do while e o for é igual ao c++.
+
+using System;
+int num=0;
+for (int i=0; i<10; i++)			//output = 1,2,3,4,5,6,7,8,9,10.
+{
+num++;
+Console.WriteLine(num);
+}
+
