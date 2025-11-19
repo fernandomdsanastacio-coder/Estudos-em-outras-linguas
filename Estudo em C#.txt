@@ -7,7 +7,7 @@ What is the difference between Write() and WriteLine() a diferença é que o wri
 // é comentário e o comando /**/ é igual, os comentário são ignorados 
 
 
-using System;									Criar uma variável é igual que Inferno.
+using System;									Criar uma variável é igual ao c++ que Inferno.
 
 public class HelloWorld
 {
@@ -33,4 +33,5 @@ int - armazena números inteiros (números inteiros), sem casas decimais, como 1
 double - armazena números de ponto flutuante, com casas decimais, como 19,99 ou -19,99
 char - armazena caracteres individuais, como 'a' ou 'B'. Os valores char são delimitados por aspas simples
 string - armazena texto, como "Olá Mundo". Os valores string são delimitados por aspas duplas
+
 bool - armazena valores com dois estados: verdadeiro ou falso
