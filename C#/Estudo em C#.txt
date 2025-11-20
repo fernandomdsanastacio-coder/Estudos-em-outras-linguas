@@ -125,6 +125,7 @@ D → 1
 seta esquerda → -1
 seta direita → 1
 joystick → valores entre -1 e 1
+
 GetAxisRaw devolve valores imediatos, sem suavização.
 
 
@@ -183,3 +184,42 @@ Define a velocidade do Rigidbody2D.
 input → direção (X e Y)
 moveSpeed → rapidez
 Isso faz o jogador mover-se com velocidade constante.
+
+
+
+rb.MovePosition( ... )
+
+Este comando move o Rigidbody2D para uma nova posição usando o sistema de física do Unity.
+
+ É o método recomendado para movimento suave
+ Evita problemas de colisão
+ Deve ser usado dentro do FixedUpdate()
+
+
+rb.position
+
+Pega a posição atual do Rigidbody2D.
+
+É equivalente a transform.position,
+mas específico para Rigidbody2D e recomendado para física.
+
+
+moveSpeed;
+
+A velocidade configurada no Inspector.
+
+Multiplica-se pela direção para decidir quão rápido o personagem anda.
+
+
+Time.fixedDeltaTime
+
+O Unity multiplica a velocidade pelo tempo entre frames de física.
+
+Por quê?
+
+Porque a física roda num ritmo fixo (ex: 50 vezes por segundo).
+Isto garante:
+
+  Movimento suave
+  Movimento independente do FPS
+ Velocidade correta mesmo se o jogo tiver lag
