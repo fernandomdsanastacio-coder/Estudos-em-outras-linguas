@@ -23,7 +23,7 @@ Console.WriteLine ("Hello world");   //igual
 
 Se usar using System não é preciso escrever System.Console.WriteLine ().
 
-class Program{   // não sei o que faz.
+class Program{   // serve para criar e usar uma classe que neste caso é program
 }
 
 Qual é a função do método Main em um programa C#?
@@ -55,4 +55,5 @@ for (int i=0; i<10; i++)			//output = 1,2,3,4,5,6,7,8,9,10.
 num++;
 Console.WriteLine(num);
 }
+
 
