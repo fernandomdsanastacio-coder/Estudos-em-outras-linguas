@@ -60,44 +60,126 @@ Console.WriteLine(num);
 using UnityEngine;
 Importa o namespace do Unity. Isso dá acesso a todas as classes básicas do motor (GameObject, MonoBehaviour, Rigidbody2D, Debug, Input, etc.).
 
+Importa o pacote principal do Unity.
+Permite usar MonoBehaviour, Rigidbody2D, Input, Debug, etc.
+
+
 public class PlayerMovement : MonoBehaviour {}
 Declara uma nova classe chamada PlayerMovement que herda de MonoBehaviour. Herdar MonoBehaviour permite anexar esse script a um GameObject na cena e usar métodos do ciclo de vida do Unity (Start, Update, FixedUpdate, etc.).
+
+Cria uma classe chamada PlayerMovement.
+MonoBehaviour significa que:
+a classe pode ser colocada num GameObject,
+pode usar Start(), Update(), FixedUpdate(),
+pode usar componentes do Unity.
+
 
 public float moveSpeed = 5f;
 Declara uma variável pública moveSpeed (tipo float) com valor inicial 5f. Como é public, aparece no Inspector do Unity e podes ajustar a velocidade do jogador sem mudar o código.
 
+Cria uma variável pública de número decimal.
+Como é public, aparece no Inspector do Unity.
+Serve para controlar a velocidade do jogador.
+
+
 private Rigidbody2D rb;
 Declara uma variável privada chamada rb do tipo Rigidbody2D. Vai guardar a referência ao componente de física 2D do GameObject.
+
+Cria uma variável privada que vai guardar o componente Rigidbody2D.
+private significa: só o script pode acessar.
+
 
 private Vector2 input;
 Declara uma variável privada input do tipo Vector2. Usada para armazenar o input do jogador (eixo X e Y) entre Update e FixedUpdate.
 
+Cria um vetor com dois valores (X e Y).
+Serve para armazenar o input do jogador.
+
+
 void Start(){}
 Método chamado pelo Unity uma vez, quando o GameObject com este script é ativado no início da cena (antes do primeiro Update).
+
+Executa uma vez quando a cena começa ou o objeto é ativado.
+
 
 rb = GetComponent<Rigidbody2D>();
 Procura e pega o componente Rigidbody2D anexado ao mesmo GameObject e armazena na variável rb. Assim conseguimos controlar a física (velocidade, forças, etc.) desse objeto.
 
+Pega o componente Rigidbody2D do GameObject em que o script está.
+É igual a ir no Inspector → encontrar o Rigidbody2D → pegar ele via código.
+
+
 void Update(){}
 Método chamado uma vez por frame. Ideal para ler inputs e outras coisas dependentes de frame (não físicas).
+
+Executa uma vez por frame.
+Aqui colocamos inputs, porque o jogador usa teclado/mouse por frame.
+
 
 float horizontalInput = Input.GetAxisRaw("Horizontal");
 Lê o input horizontal do jogador. Input.GetAxisRaw("Horizontal") retorna -1, 0 ou 1 (teclas A/D, seta esquerda/direita ou joystick). GetAxisRaw não aplica suavização — entrega valores brutos.
 
+Lê o input horizontal:
+A → -1
+D → 1
+seta esquerda → -1
+seta direita → 1
+joystick → valores entre -1 e 1
+GetAxisRaw devolve valores imediatos, sem suavização.
+
+
 float verticalInput = Input.GetAxisRaw("Vertical");
 Lê o input vertical (teclas W/S, seta cima/baixo ou joystick), também em -1, 0 ou 1.
+
+Lê o input vertical:
+W → 1
+S → -1
+seta cima/baixo → 1 ou -1
+
 
 input = new Vector2(horizontalInput, verticalInput).normalized;
 Cria um Vector2 com os valores dos dois eixos e aplica .normalized para que a magnitude do vetor seja 1 quando há input diagonal. Isso evita que mover na diagonal seja mais rápido (√2 vezes) que mover em linha reta. O resultado é armazenado em input.
 
+Cria um vetor com dois valores:
+X = movimento horizontal
+Y = movimento vertical
+
+.normalized:
+Faz o vetor ter tamanho 1.
+Serve para que andar na diagonal não fique mais rápido.
+
+
 Debug.Log("Input Horizontal: " + horizontalInput);
 Imprime no Console do Unity o valor do input horizontal — útil para verificar se o input está a ser lido corretamente.
+
+Debug.Log("texto");
+Escreve uma mensagem no Console para debug.
+Exemplo:
+
+Debug.Log("Input Horizontal: " + horizontalInput);
+
+Mostra no console o valor do input.
+
+
 
 Debug.Log("Input Vertical: " + verticalInput);
 Imprime no Console o valor do input vertical.
 
+
+
 void FixedUpdate(){}
 Método chamado em intervalos fixos alinhados com o sistema de física do Unity (por padrão 50 vezes por segundo). Ideal para aplicar mudanças relacionadas à física, como alterar rb.velocity ou aplicar forças.
 
+É chamado num ritmo fixo (50 vezes por segundo).
+É aqui que a física deve ser aplicada.
+
+Nunca se usa Update para mover um Rigidbody.
+
+
 rb.velocity = input * moveSpeed;
 Define a velocidade do Rigidbody2D. Aqui multiplicamos o vetor unitário input pela moveSpeed para obter a velocidade final. Como esta atribuição acontece no FixedUpdate, a física mantém-se estável e consistente.
+
+Define a velocidade do Rigidbody2D.
+input → direção (X e Y)
+moveSpeed → rapidez
+Isso faz o jogador mover-se com velocidade constante.
